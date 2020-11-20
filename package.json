@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/farias0/receitas#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "giphy": "0.0.4"
