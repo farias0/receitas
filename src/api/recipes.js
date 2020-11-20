@@ -2,8 +2,11 @@
 
 const express = require('express');
 
+const getKeywords = require('../middlewares/getKeywords');
+const sendRequest = require('../middlewares/sendRequestAsResponse');
+
 const routes = express.Router();
 
-routes.get('/recipes', () => { console.log('hit /recipes'); });
+routes.get('/recipes', getKeywords, sendRequest);
 
 module.exports = routes;
