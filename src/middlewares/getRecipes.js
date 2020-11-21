@@ -19,9 +19,18 @@ module.exports = async(req, res, next) => {
 
   // if would be cool to have a parameter specifying the # of queried recipies.
   // - currently using recipe puppy's default (10)
-  const response = await recipePuppy.queryByIngredients(req.body.keywords);
 
-  if (!ACCEPT_STATUS.includes(response.status)) {
+  let response;
+
+  try {
+
+    response = await recipePuppy.queryByIngredients(req.body.keywords);
+
+    if (!ACCEPT_STATUS.includes(response.status)) {
+      throw new Error('API Request Failed');
+    }
+
+  } catch (error) {
     res.status(503).send(EXTERNAL_ERROR_MSG);
     return;
   }
